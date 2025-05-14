@@ -1,0 +1,36 @@
+import random
+from datetime import datetime
+
+NORMAL = {"hr":(60, 100), "spo2":(95, 100), "temp"(36.1, 37.2)}
+
+
+def read _vitals():
+       return {
+                "timestamp": datetime .now().isoform at (),
+                "hr": random. rand int(50, 120),
+                "spo2": random. rand int(90, 100),
+                "temp" : round(random. uniform(35, 39), 1)
+      }
+
+
+def encrypt_ data(data):
+     return f" ENCRYPTED<{data}>"
+
+
+def detect _issues(v):
+      issues = []
+      for key, (low, high) in NORMALS. items():
+            if not (low <= v[key] <= high):
+               issues. append(f "Alerts: {key. upper()} ={v[key]}")
+       return issues
+
+
+vitals = read_ vitals()
+print(f "Vitals: {vitals}")
+encrypted = encrypt_ data(vitals)
+print(f "Secured: {encrypt}")
+alerts = detect _issues(vitals)
+for alert in alerts:
+     print(alert)
+                 
+
