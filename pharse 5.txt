@@ -1,0 +1,24 @@
+import pandas as pd
+from sklearn . ensemble import Random Forest Classifier
+from sklearn . model_ selection import train _ test _ split
+from sklearn . metrices import accuracy _ score
+
+
+data = pd .Data Frame({
+          'heart _ rate' : [72, 110, 88, 45],
+          'bp' : [120, 140, 110, 90],
+          'spo2' : [0, 1, 0, 1]
+})
+
+
+X = data[['heart _ rate', 'bp', 'spo2']]
+Y = data['anomaly']
+
+X_ train, X_ test, Y_ train, Y_ test = train_ test_ split(x, y, test_ size= 0.2, random_ state = 42)
+Cl f = Random Forest Classifier(n_ estimators = 100)
+Cl f . fit(X _ train, Y _ train)
+
+
+y_ pred = Cl f . predict(X_ test)
+print("Accuracy: ", accuracy_ score(Y_ test, y_ pred)) 
+ 
