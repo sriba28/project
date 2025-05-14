@@ -1,0 +1,58 @@
+import random
+import time
+from datetime import datetime
+
+
+NORMAL_RANGES = {
+                 "heart _ rate": (60, 100),
+                 "spo2" : (95, 100),
+                 "temperature" : (36.1, 37.2)
+}
+
+
+def get_ sensor_ data ():
+    return {
+            "timestamp" : datetime . now().str time ("%Y-%m-%d %H:%M:%S"),
+            "heart _ rate" : random. rand int(55, 110),
+            "spo2" : random. rand int(90, 100),
+            "temperature" : round(random .uniform(35.5, 38.5), 1)
+    }
+
+
+def detect _ anomalies(data):
+     alerts = {}
+     for key in NORMAL_RANGES:
+         low, high = NORMAL_RANGES[key]
+         if not (low <= data[key] <= high);
+             alerts[key] = f" Abnormal {key .replace('_',' ')};
+                 {data[key]}"
+    return alerts
+
+
+def display _data(data, alerts):
+    print(f"\n Sensor Reading at {data['timestamp']}")
+    print(f" Heart Rate: {data['heart _ rate']} bpm")
+    print(f"Spo2: {data['spo2']}%")
+    print(f" Body Temp: {data['temperature']} \u00B0C")
+
+if alerts:
+     print("ALERTS:")
+     for key, message in alerts. items():
+          print (f" - {message}")
+else:
+     print("All vitals normal.")
+
+
+def main():
+      print("Starting Remote Patient Monitoring System...")
+      for i in range(5):
+          sensor _ data = get _sensor _ data()
+          alerts = detect_ anomalies (sensor _ data)
+          display _ data(sensor _ data, alerts)
+          time .sleep(2)
+
+
+if _name_ == " _main_ ":
+   main()
+             
+                   
